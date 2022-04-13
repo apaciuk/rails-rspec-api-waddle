@@ -8,7 +8,7 @@ RSpec.describe 'Categories', type: :request do
   let!(:category_id) { categories.first.id }
 
   # Get category
-  describe 'GET /categories' do # rubocop:disable RSpec/DescribeClass
+  describe 'GET /categories' do
     before { get 'api/v1/categories' }
 
     it 'returns categories' do
@@ -54,7 +54,7 @@ RSpec.describe 'Categories', type: :request do
 
   # Delete /category/:id
 
-  describe 'DELETE /categories/:id' do # rubocop:disable RSpec/DescribeClass
+  describe 'DELETE /categories/:id' do
     before { delete "api/v1/categories/#{category_id}" }
 
     it 'returns status code 204' do
@@ -62,4 +62,3 @@ RSpec.describe 'Categories', type: :request do
     end
   end
 end
-
