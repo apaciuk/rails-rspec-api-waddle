@@ -3,6 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Books', type: :request do
+
   let!(:books) { create_list(:book, 10) }
   let!(:book_id) { books.first.id }
   describe 'GET /books' do
