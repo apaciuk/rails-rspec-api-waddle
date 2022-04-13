@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe 'Categories', type: :request do
   # Initialize test data
   let!(:categories) { create_list(:category, 5) }
-  # let!(category_id) { categories.first.id }
+  let!(:category_id) { categories.first.id }
 
   # Get category
   describe 'GET /categories' do # rubocop:disable RSpec/DescribeClass
@@ -47,8 +47,18 @@ RSpec.describe 'Categories', type: :request do
 
       it 'returns a validation failure message' do
         expect(response.body)
-          .to match(/Validation failed: Name can't be blank/)
+          .to match(/Validation failed: Name can't be blank and must have over 3 characters/)
       end
+    end
+  end
+
+  # Delete /category/:id
+
+  describe 'DELETE /categories/:id' do # rubocop:disable RSpec/DescribeClass
+    before { delete "api/v1/categories/#{category_id}" }
+
+    it 'returns status code 204' do
+      expect(response).to have_http_status(204)
     end
   end
 end
