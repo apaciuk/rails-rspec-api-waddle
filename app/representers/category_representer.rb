@@ -7,12 +7,13 @@ class CategoryRepresenter
 
   def as_json(*)
     {
-      id: @category.id,
-      name: @category.name,
+      id: category.id,
+      name: category.name
 
     }
   end
 
   private
+
   attr_reader :category
 end
